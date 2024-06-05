@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url("{% static 'DiabeticsPrediction\images\doctors.jpg' %}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 150px;
+            text-align: center;
+            
+        }
+        
+        .diabetic-container {
+            
+             width: 50%;
+             /*background-color: #fff;*/
+             padding: 20px;
+             border-radius: 20px;
+             left: 40px;
+             box-shadow: 0 0 30px rgb(0, 0, 0);
+             display: inline-block;
+             text-align: center;
+             display: inline-block;
+             background-color: rgb(104, 133, 231);
+            /* padding-left: 150px;*/
+            
+        }
+                
+        h1{
+            color: #f2f3fc;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        h2{
+            color: rgb(37, 26, 189);
+            font-size: 25px;
+            font-weight: bold; 
+        }
+        
+        input[type=submit]{
+            background-color: #4dc3ff;
+            border: 2px;
+            color: rgb(0, 0, 0);
+           /* padding: 8px 16px;
+            cursor: pointer;*/
+            margin-top: 10px;
+        }
+       
+        input[type=text]{
+            color: rgb(15, 15, 15);
+            margin-top: 10px;
+        }
+        td{
+            color: rgb(12, 12, 12);
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .diabetic-form{
+             display: flex;
+            flex-direction: column;
+            
+        }
+        button {
+             padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+             border-radius: 4px;
+        }
+        button {
+            background-color: rgb(136, 212, 91);
+            color: #fff;
+            cursor: pointer;
+        }
+        .mybtnone:hover{background-color : #E40203}
+        
+
+        .form-control {
+            display: block;
+             width: 100%;
+            height: calc(0.25rem + 0.75rem + 2px);
+            padding: 0.15rem 0.35rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        .header{
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            text-align: center;
+
+        }
+        .positive {
+            color: rgb(9, 255, 0);
+        }
+        .non-positive {
+            color: rgb(233, 16, 16);
+        }
+        .inline {
+        display: inline;
+        }
+        .black-text {
+        color: black;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2 style="margin-top:10px" align="center"><b>DIABETICS PREDICTION</b></h2>
+        </div>
+    
+        <div align="center" class="diabetic-container" >
+            <!--style="width:90%;margin-top:0%-->
+            <h1>ENTER THE FOLLOWING INFORMATION</h1>
+            <form  class="diabetic-form"  action="result">
+                <table>
+                    <tr>
+                        <td align="left">PREGNANCIES</td>
+                        <td align="left">:</td>
+                        <td align="right"><input type="text" name="n1" required="required" placeholder="Pregnencies" class="form-control"></td>
+                    </tr>
+                     <tr>
+                        <td align="left">GLUCOSE</td>
+                        <td align="left">:</td>
+                        <td align="right"><input type="text" name = "n2" required="required" placeholder="Glucose" class="form-control" ></td>
+                    </tr>
+                    <tr>
+                        <td align="left">BLOOD PRESSURE</td>
+                        <td align="left">:</td>
+                        <td align="right"><input type="text" name = "n3" required="required" placeholder="Blood Pressure" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">SKIN THICKNESS</td>
+                        <td align="left">:</td>
+                        <td align="right"><input type="text" name = "n4" required="required" placeholder="skin thickness" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">INSULIN</td>
+                        <td align="left">:</td>
+                        <td align="right"><input type="text" name = "n5" required="required" placeholder="Insulin" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">BMI</td>
+                        <td align="left">:</td>
+                        <td align="right"><input type="text" name = "n6" required="required" placeholder="BMI" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">DIABETICS PEDIGREE FUNCTION</td>
+                        <td align="left">:</td>
+                        <td align="right"><input type="text" name = "n7" required="required" placeholder="diabetics pedigree" class="form-control"></td>
+                    </tr>
+                    <tr>
+                        <td align="left">AGE</td>
+                        <td align="left">:</td>
+                        <td align="right"><input type="text" name = "n8" required="required" placeholder="age" class="form-control"></td>
+                    </tr>
+                </table>
+                <button type="submit" class="btn btn-primary mybtnone"><b>PREDICT</b></button>
+            </form>
+            <!--<div><div>
+                <b class="black-text inline">Result: </b>
+                <div class="{% if result2 == 'Positive' %}positive{% else %}non-positive{% endif %} inline">
+                    <b>{{ result2 }}</b>
+                 </div>
+                 
+            </div></div>-->
+            
+            
+    </div>
+</body>
+</html>
